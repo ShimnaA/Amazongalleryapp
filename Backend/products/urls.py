@@ -1,5 +1,6 @@
 from django.urls import path, include
-from .views import ProductList, CategoryViewSet, SellerViewSet, ProductListAPIView
+from .views import ProductList, CategoryViewSet, SellerViewSet, ProductListAPIView, ReportView
+from .views import ProductDetail
 from rest_framework.routers import DefaultRouter
 
 
@@ -17,9 +18,9 @@ router.register(r'sellers', SellerViewSet)
 urlpatterns=[
     path('', include(router.urls)),
     path('products/', ProductList.as_view()),
+    path('products/<int:pk>/', ProductDetail.as_view()),
     path('products-filter/', ProductListAPIView.as_view()),
+    path('add-products/', ReportView.as_view()),
     path('categories/', category_list, name='category-list'),
     path('categories/<int:pk>/', category_detail, name='category-detail'),
-
-
 ]
