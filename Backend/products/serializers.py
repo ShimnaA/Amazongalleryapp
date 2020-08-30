@@ -6,13 +6,13 @@ class CategorySerializer(ModelSerializer):
 
     def get_random_photo(self, obj):
         try:
-            obj.products.first().photo
+            return obj.products.first().photo
         except:
             return ""
 
     class Meta:
         model = Category
-        fields= (
+        fields = (
             'id',
             'name',
             'random_photo'
@@ -36,6 +36,7 @@ class ProductSerializer(ModelSerializer):
             'title',
             'category',
             'seller',
+            'photo',
         )
 
 class ProductAllInfoSerializer(ModelSerializer):
@@ -50,5 +51,6 @@ class ProductAllInfoSerializer(ModelSerializer):
             'price',
             'title',
             'category',
-            'seller'
+            'seller',
+            'photo',
         )
